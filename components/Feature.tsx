@@ -5,7 +5,7 @@ export default function Feature() {
   return (
     <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 sm:mt-32 h-full">
       <div className="text-center">
-        <div className="text-3xl sm:text-4xl lg:text-4xl font-semibold">
+        <div className="text-3xl sm:text-4xl font-extrabold tracking-tighter">
           Everything You Need for Magical Conversations
         </div>
         <p className="text-md mt-2 max-w-2xl lg:max-w-xl mx-auto text-zinc-300 tracking-wider">
@@ -47,7 +47,7 @@ export default function Feature() {
                 description: "Get instant replies with no waiting or loading times.",
             }
         ].map((feature, index) => (
-            <div className="p-6 rounded-xl bg-gradient-to-br from-cyan-900 via-gray-800 to-gray-900 shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-700">
+            <div key={index} className="p-6 rounded-xl bg-gradient-to-br from-cyan-900 via-gray-800 to-gray-900 shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-700">
                 <feature.icon className="w-10 h-10 text-blue-500 mb-4 relative z-10" />
                 <h3 className="text-xl font-semibold mb-2">
                     {feature.title}

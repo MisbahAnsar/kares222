@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import { useState } from "react";
 import Landing from "@/components/Landing";
 import Feature from "@/components/Feature";
+import Pricing from "@/components/Pricing";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -17,6 +19,8 @@ export default function Home() {
       <Navbar />
       <Landing />
       <Feature />
+      <Pricing />
+      <Footer />
     </div>
   );
 }

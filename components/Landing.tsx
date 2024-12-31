@@ -3,9 +3,9 @@ import { MessageSquare, Sparkles, Zap } from "lucide-react";
 export default function Landing() {
   return (
     <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 sm:mt-32">
-      <div className="text-4xl sm:text-5xl lg:text-6xl text-center sm:font-semibold">
+      <div className="text-4xl sm:text-5xl lg:text-6xl text-center font-extrabold tracking-tighter">
         Chat with Your Favourite{" "}
-        <span className="bg-gradient-to-r from-cyan-300 via-cyan-600 to-cyan-800 bg-clip-text text-transparent font-bold">
+        <span className="bg-gradient-to-r from-cyan-300 via-cyan-600 to-cyan-800 bg-clip-text text-transparent">
           Anime
         </span>{" "}
         Characters Anytime
@@ -24,7 +24,7 @@ export default function Landing() {
         </button>
       </div>
 
-      <div className="absolute left-0 top-1/2 mt-10 w-96 h-96 bg-gradient-to-r from-cyan-600 via-cyan-800 to-cyan-900 mix-blend-screen blur-3xl opacity-30"></div>
+      <div className="absolute left-0 top-1/2 mt-56 w-96 h-96 bg-gradient-to-r from-cyan-600 via-cyan-800 to-cyan-900 mix-blend-screen blur-3xl opacity-30"></div>
 
       <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="p-6 rounded-xl bg-gradient-to-br from-cyan-900 via-gray-800 to-gray-900 shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-700">
