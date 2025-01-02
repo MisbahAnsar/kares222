@@ -1,29 +1,29 @@
 "use client";
 
+import { CharacterCard } from "@/components/ui/apple-cards-carousel";
+import { characters } from "@/data/character";
 import { useState } from "react";
+import { Carousel } from "@/components/ui/apple-cards-carousel";
+import Navbar from "@/components/Navbar";
+import Chats from "@/components/ui/Chats";
 
 export default function ChatBot() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
-  const [character, setCharacter] = useState("naruto");
-
-  const chars: Record<string, string> = {
-    naruto: "You are Naruto uzumaki, known as hokage, Answer as Naruto Uzumaki, if not able to find the solution then also answer as Naruto",
-    Rius: "You are Rius Grammery from High school dxd and you are a girl, Answer as Rius Grammery, if not able to find the solution then also answer as Rius",
-    sungjinwoo:
-      "You are sungjinwoo from solo levelling, answer as sungjinwoo, if not able to find the solution then also answer as sungjinwoo",
-  };
+  const [character, setCharacter] = useState<string | null>(null); // Holds the selected character ID
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!prompt.trim()) return;
+    if (!prompt.trim() || !character) return; // Ensure both prompt and character are selected
 
     setLoading(true);
     setResponse("");
 
-    const finalPrompt = `${chars[character]} ${prompt}`;
+    const finalPrompt = `${
+      characters.find((char) => char.id === character)?.description
+    } ${prompt}`;
 
     try {
       const res = await fetch("/api/generative-ai", {
@@ -49,44 +49,52 @@ export default function ChatBot() {
   };
 
   return (
-    <div className="h-screen text-white" style={{
-      background: "radial-gradient(ellipse 80% 80% at 50% -25%, rgba(76, 201, 255, 0.3), rgba(0, 0, 0, 0)), #0b0d11",
-    }}
+    <div
+      className="h-full text-white"
+      style={{
+        background:
+          "radial-gradient(ellipse 80% 80% at 50% -25%, rgba(76, 201, 255, 0.3), rgba(0, 0, 0, 0)), #0b0d11",
+      }}
     >
-      <div className="max-w-[700px] m-auto p-4">
-        <h2 className="text-3xl font-medium">An Anime AI ChatBot</h2>
-        <form onSubmit={handleSubmit}>
-          <label className="block mb-4">
-            Select a Character:
-            <select
-              value={character}
-              onChange={(e) => setCharacter(e.target.value)}
-              className="block w-full p-2 mt-2 bg-black text-orange-400"
-            >
-              <option value="naruto">Naruto</option>
-              <option value="Rius">Rius</option>
-              <option value="sungjinwoo">sungjinwoo</option>
-              {/* <option value="naruto">Naruto</option> */}
-            </select>
-          </label>
-          <textarea
-            placeholder="Enter your prompt..."
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            rows={5}
-            style={{ width: "100%", marginBottom: "1rem", padding: "0.5rem" }}
-            className="bg-gray-500 text-white"
+      <Navbar />
+      {/* Character Selection Section */}
+      <div className="mx-auto px-6 sm:px-10 max-w-4xl">
+        <div className="text-white border-2 rounded-xl border-gray-700 mt-10">
+          <h1 className="text-2xl font-bold px-4 pt-6">Select Character</h1>
+          {/* Use Carousel for Character Selection */}
+          <Carousel
+            items={characters.map((char) => (
+              <CharacterCard
+                key={char.id}
+                name={char.name}
+                avatar={char.avatar}
+                onSelect={() => setCharacter(char.id)} // Set the selected character
+              />
+            ))}
           />
-          <button type="submit" disabled={loading}>
-            {loading ? "Generating..." : "Generate"}
-          </button>
-        </form>
-        {response && (
-          <div style={{ marginTop: "1rem", whiteSpace: "pre-wrap" }}>
-            <h2>Response:</h2>
-            <p>{response}</p>
-          </div>
-        )}
+
+          {/* Chat Component  */}
+          <Chats
+            characterName={
+              character
+                ? characters.find((char) => char.id === character)?.name || null
+                : null
+            }
+            characterDescription={
+              character
+                ? characters.find((char) => char.id === character)
+                    ?.description || null
+                : null
+            }
+            characterAvatar={
+              character
+                ? characters.find((char) => char.id === character)?.avatar ||
+                  null
+                : null
+            }
+            disabled={!character}
+          />
+        </div>
       </div>
     </div>
   );
