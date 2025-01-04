@@ -21,14 +21,14 @@ export const MessageInput: React.FC<MessageInputProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4 border-t dark:border-gray-700">
+    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4 border-t">
       <input
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder={disabled ? "Select a character to start chatting" : "Type your message..."}
         disabled={disabled}
-        className="flex-1 px-4 py-2 rounded-lg border dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex-1 px-4 py-2 bg-gray-800 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
       />
       <button
       title='Send'
