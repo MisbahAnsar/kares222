@@ -38,13 +38,14 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Connect</h3>
             <div className="flex space-x-4">
-              <a href="" className="hover:text-white">
+              <a href="https://github.com/MisbahAnsar" className="hover:text-white">
                 <Github className="w-6 h-6" />
               </a>
-              <a href="" className="hover:text-white">
+              <a href="https://x.com/Misba8069" className="hover:text-white">
                 <Twitter className="w-6 h-6" />
               </a>
-              <a href="" className="hover:text-white">
+              <a href="mailto:misbaansari444@gmail.com?subject=Hey jinwoo/Misbah&body=The project is nice btw?" 
+              className="hover:text-white">
                 <Mail className="w-6 h-6" />
               </a>
             </div>
@@ -52,17 +53,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-400">
-            © 2024 AnimeChat AI. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/" className="text-sm text-gray-400 hover:text-white">
-              Privacy Policy
-            </Link>
-            <Link href="/" className="text-sm text-gray-400 hover:text-white">
-              Terms of Service
-            </Link>
-          </div>
+          <p className='text-lg'>Made with ❤️ by <a href="https://github.com/MisbahAnsar" className="hover:text-white">Misbah Ansari</a></p>
         </div>
       </div>
     </footer>

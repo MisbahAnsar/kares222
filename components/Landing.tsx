@@ -1,4 +1,5 @@
 import { MessageSquare, Sparkles, Zap } from "lucide-react";
+import Link from "next/link";
 
 export default function Landing() {
   return (
@@ -14,7 +15,9 @@ export default function Landing() {
         <button className="relative overflow-hidden text-white font-medium px-7 py-3 rounded-lg transition duration-300 group">
           <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 transition duration-300"></span>
           <span className="absolute inset-0 bg-opacity-40 bg-black mix-blend-multiply group-hover:mix-blend-normal"></span>
-          <span className="relative z-10">Try for free</span>
+          <span className="relative z-10">
+            <Link href='/chat'> Try for free </Link>
+          </span>
         </button>
         <button
           className="border-1 bg-white text-black rounded-lg px-7 py-3"

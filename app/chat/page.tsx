@@ -8,45 +8,7 @@ import Navbar from "@/components/Navbar";
 import Chats from "@/components/ui/Chats";
 
 export default function ChatBot() {
-  const [prompt, setPrompt] = useState("");
-  const [response, setResponse] = useState("");
-  const [loading, setLoading] = useState(false);
   const [character, setCharacter] = useState<string | null>(null); // Holds the selected character ID
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!prompt.trim() || !character) return; // Ensure both prompt and character are selected
-
-    setLoading(true);
-    setResponse("");
-
-    const finalPrompt = `${
-      characters.find((char) => char.id === character)?.description
-    } ${prompt}`;
-
-    try {
-      const res = await fetch("/api/generative-ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: finalPrompt }),
-      });
-
-      const data = await res.json();
-      console.log("API Response:", data);
-
-      if (res.ok) {
-        setResponse(data.response);
-      } else {
-        setResponse(data.error || "Error occurred");
-      }
-    } catch (error) {
-      console.error("Error: ", error);
-      setResponse("Failed to fetch AI response");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div

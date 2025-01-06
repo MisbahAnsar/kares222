@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Pricing() {
   return (
-    <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 sm:mt-32">
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 mt-24 sm:mt-32 relative">
       <div className="text-center">
         <div className="text-3xl sm:text-4xl font-extrabold tracking-tighter">
           Simple, Transparent Pricing
@@ -12,6 +12,8 @@ export default function Pricing() {
           Choose the perfect plan for your chatting needs
         </p>
       </div>
+
+      <div className="absolute right-0 mt-[-300px] w-96 h-96 bg-gradient-to-r from-cyan-600 via-cyan-800 to-cyan-900 mix-blend-screen blur-3xl opacity-30"></div>
 
       {/* cards  */}
       <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-8">

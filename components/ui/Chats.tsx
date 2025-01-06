@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MessageInput } from "./MessageInput";
+import Image from "next/image";
 
 interface Message {
   sender: string;
@@ -26,18 +27,16 @@ export default function Chats({
   const handleSendMessage = async (message: string) => {
     if (!characterDescription || !characterName) return;
 
-    const userMessage = { sender: "You", text: message };
+    const userMessage: Message = { sender: "You", text: message };
     setMessages((prev) => [...prev, userMessage]);
 
     setLoading(true);
 
     try {
-      // Combine previous messages into the final prompt for context
       const chatHistory = messages
         .map((msg) => `${msg.sender}: ${msg.text}`)
         .join("\n");
       const finalPrompt = `${characterDescription}\n${chatHistory}\nYou: ${message}`;
-      console.log("finalPrompt: ", finalPrompt);
 
       const res = await fetch("/api/generative-ai", {
         method: "POST",
@@ -47,14 +46,14 @@ export default function Chats({
 
       const data = await res.json();
       if (res.ok) {
-        const botMessage = {
+        const botMessage: Message = {
           sender: characterName,
           text: data.response,
-          avatar: characterAvatar,
+          avatar: characterAvatar || "",
         };
-        setMessages((prev: any) => [...prev, botMessage]);
+        setMessages((prev) => [...prev, botMessage]);
       } else {
-        const errorMessage = {
+        const errorMessage: Message = {
           sender: characterName,
           text: "Error occurred. Please try again.",
         };
@@ -62,7 +61,7 @@ export default function Chats({
       }
     } catch (error) {
       console.error("Error: ", error);
-      const errorMessage = {
+      const errorMessage: Message = {
         sender: characterName,
         text: "Failed to fetch AI response.",
       };
@@ -97,7 +96,7 @@ export default function Chats({
                  <strong>{msg.sender}: </strong>
                  <span>{msg.text}</span>
                </div>
-               <img
+               <Image
                  src="https://pbs.twimg.com/profile_images/1873433936103419904/wsrNk4eR_400x400.jpg"
                  alt={msg.sender}
                  className="w-10 h-10 rounded-full mr-2"
@@ -106,7 +105,7 @@ export default function Chats({
            ) : (
              <>
                {msg.avatar && (
-                 <img
+                 <Image
                    src={msg.avatar}
                    alt={msg.sender}
                    className="w-10 h-10 rounded-full"
