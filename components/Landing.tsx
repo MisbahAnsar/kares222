@@ -55,7 +55,7 @@ export default function Landing() {
           <h3 className="text-xl font-semibold mb-2">Natural Conversations</h3>
           <p className="text-gray-600">
             Engage in fluid, context-aware conversations that feel real and
-            meaningful.
+            meaningful
           </p>
         </div>
         <div className="p-6 rounded-xl bg-gradient-to-br from-cyan-900 via-gray-800 to-gray-900 shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-700">
