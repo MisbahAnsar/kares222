@@ -10,9 +10,14 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "pbs.twimg.com",
+        hostname: "tse4.mm.bing.net",
         pathname: "/**", // Matches all paths under this domain
       },
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+        pathname: "/**", // Matches all paths under this domain
+      }
     ],
   }, 
 };

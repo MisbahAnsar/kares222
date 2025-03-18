@@ -1,4 +1,5 @@
 "use client";
+
 import React, {
   useEffect,
   useState,
@@ -109,16 +110,17 @@ export const CharacterCard = ({
   return (
     <div
       onClick={onSelect}
-      className="cursor-pointer border w-64 h-auto border-gray-500 rounded-md p-4 text-center hover:bg-gray-800 transition"
+      className="cursor-pointer lg:border lg:w-52 h-auto border-gray-500 rounded-md p-1 sm:p-4 text-center hover:bg-gray-800 transition"
     >
       <Image
-        width={220}
-        height={220}
+        width={64}
+        height={90}
         src={avatar}
         alt={name}
-        className="mx-auto rounded-md mb-2"
+        className="mx-auto sm:w-36 lg:w-52 rounded-full sm:rounded-md mb-2"
+        sizes="(max-width: 640px) 80px, (max-width: 1024px) 150px, 220px"
       />
-      <h3 className="text-lg font-bold text-white">{name}</h3>
+      <h3 className="text-lg hidden sm:block font-bold text-white">{name}</h3>
     </div>
   );
 };

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Chat with your favorite anime characters",
     images: [
       {
-        url: "https://tse4.mm.bing.net/th?id=OIP.wIZ5OigXRUoEu8brseg_0wHaHa&pid=Api&P=0&h=220",
+        url: "https://tse4.mm.bing.net/th?id=OIP.wIZ5OigXRUoEu8brseg_0wHaHa&pid=Api&P=0&h=220&w=220",
         width: 1200,
         height: 630,
         alt: "Kares",
