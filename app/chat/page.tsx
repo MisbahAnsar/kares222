@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Plus, MessageSquare, Users, Settings } from "lucide-react";
+import { Search, Plus } from "lucide-react";
 import Image from "next/image";
 import { characters } from "@/data/character";
 import Chats from "@/components/ui/Chats";

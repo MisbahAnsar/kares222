@@ -46,6 +46,8 @@ export default function Chats({
     }
   }, []);
 
+  console.log(isTyping);
+
   // Auto-scroll to bottom when messages are updated
   useEffect(() => {
     if (chatContainerRef.current) {

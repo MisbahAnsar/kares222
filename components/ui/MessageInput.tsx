@@ -7,7 +7,7 @@ interface MessageInputProps {
 }
 
 export const MessageInput = forwardRef<HTMLInputElement, MessageInputProps>(
-  ({ onSendMessage, disabled = false, inputRef }, ref) => {
+  ({ onSendMessage, disabled = false, inputRef }) => {
     const [message, setMessage] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
