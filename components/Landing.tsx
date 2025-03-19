@@ -36,7 +36,7 @@ export default function Landing() {
         {/* Right side: Image */}
         <div className="hidden md:block flex-1 relative mt-10 md:mt-0">
   <div className="absolute -top-52 right-0 w-96 h-96">
-    <Image
+    <img
       src="luffy2.png" // Replace with your image path
       alt="Anime Character"
       className="rounded-lg shadow-2xl w-full h-full scale-x-[-1]"
