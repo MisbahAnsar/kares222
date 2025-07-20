@@ -3,11 +3,10 @@ import React, { forwardRef, useState } from "react";
 interface MessageInputProps {
   onSendMessage: (message: string) => void;
   disabled?: boolean;
-  inputRef: React.RefObject<HTMLInputElement>; // Add ref prop
 }
 
 export const MessageInput = forwardRef<HTMLInputElement, MessageInputProps>(
-  ({ onSendMessage, disabled = false, inputRef }) => {
+  ({ onSendMessage, disabled = false }, ref) => {
     const [message, setMessage] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -29,7 +28,7 @@ export const MessageInput = forwardRef<HTMLInputElement, MessageInputProps>(
             placeholder={disabled ? "Select a character" : "Enter message..."}
             disabled={disabled}
             className="flex-1 px-4 py-2 bg-transparent text-white placeholder-gray-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed text-sm"
-            ref={inputRef} // Attach the ref here
+            ref={ref} // Attach the ref here
           />
         </div>
 

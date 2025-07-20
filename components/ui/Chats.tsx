@@ -186,9 +186,9 @@ export default function Chats({
       {/* Message Input Section */}
       <div className="p-4 border-t border-zinc-900">
         <MessageInput
+          ref={inputRef}
           onSendMessage={handleSendMessage}
           disabled={disabled || loading}
-          inputRef={inputRef}
         />
       </div>
     </div>

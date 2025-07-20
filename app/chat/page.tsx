@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Plus } from "lucide-react";
 import Image from "next/image";
 import { characters } from "@/data/character";
@@ -18,6 +18,20 @@ export default function ChatBot() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatHistories, setChatHistories] = useState<{ [key: string]: Message[] }>({}); // Store chat history per character
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const [characterUnreadStatus, setCharacterUnreadStatus] = useState<{ [key: string]: { hasUnread: boolean; count?: number } }>({});
+
+  // Initialize unread status after component mounts (client-side only)
+  useEffect(() => {
+    const unreadStatus: { [key: string]: { hasUnread: boolean; count?: number } } = {};
+    characters.forEach((character) => {
+      const hasUnread = Math.random() > 0.7;
+      unreadStatus[character.name] = {
+        hasUnread,
+        count: hasUnread ? Math.floor(Math.random() * 8) + 1 : undefined,
+      };
+    });
+    setCharacterUnreadStatus(unreadStatus);
+  }, []); // Run once after mount
 
   const handleSelectCharacter = (name: string) => {
     setSelectedCharacter(name);
@@ -66,8 +80,8 @@ export default function ChatBot() {
 
             <div className="flex-1 overflow-auto chat-container">
               {filteredCharacters.map((character) => {
-                const hasUnread = Math.random() > 0.7;
-                const unreadCount = hasUnread ? Math.floor(Math.random() * 8) + 1 : undefined;
+                const unreadStatus = characterUnreadStatus[character.name];
+                const hasUnread = unreadStatus?.hasUnread || false;
 
                 return (
                   <div
@@ -94,7 +108,7 @@ export default function ChatBot() {
                       </div>
                       <p
                         className={`text-sm truncate flex items-center gap-2 ${
-                          unreadCount ? "text-white" : "text-zinc-400"
+                          hasUnread ? "text-white" : "text-zinc-400"
                         }`}
                       >
                         <span className="inline-block">✓</span> {character.about}
