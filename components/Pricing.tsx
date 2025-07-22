@@ -7,10 +7,10 @@ export default function Pricing() {
         {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Choose Your Anime Journey
+            Meet Your Anime Characters
           </h2>
           <p className="text-lg tracking-wide mt-2 text-white/90">
-            Unlock the ultimate anime streaming experience
+            Chat with your favorite anime characters
           </p>
         </div>
 
