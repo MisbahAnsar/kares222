@@ -2,15 +2,15 @@ import { Check } from "lucide-react"
 
 export default function Pricing() {
   return (
-    <div className="w-full bg-gradient-to-b from-blue-400 to-blue-700 py-24 rounded-t-3xl">
+    <div className="w-full bg-black py-24 rounded-t-3xl">
       <div className="max-w-6xl mx-auto px-6 sm:px-10">
         {/* Header */}
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Meet Your Anime Characters
+            Premium Anime Experience
           </h2>
-          <p className="text-lg tracking-wide mt-2 text-white/90">
-            Chat with your favorite anime characters
+          <p className="text-lg tracking-wide mt-2 text-gray-400">
+            Unlock exclusive conversations with your favorite characters
           </p>
         </div>
 
@@ -18,13 +18,13 @@ export default function Pricing() {
         <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
             {
-              name: "Otaku Starter",
+              name: "Premium Basic",
               price: "0",
-              bgColor: "bg-slate-50",
-              borderColor: "border-slate-200",
-              textColor: "text-slate-600",
-              priceColor: "text-slate-800",
-              buttonColor: "bg-slate-600 hover:bg-slate-700",
+              bgColor: "bg-gray-900",
+              borderColor: "border-gray-700",
+              textColor: "text-white",
+              priceColor: "text-white",
+              buttonColor: "bg-white text-black hover:bg-gray-200",
               features: [
                 "5 messages per day",
                 "3 character choices",
@@ -33,13 +33,13 @@ export default function Pricing() {
               ],
             },
             {
-              name: "Anime Pro",
+              name: "Premium Pro",
               price: "9.99",
-              bgColor: "bg-rose-50",
-              borderColor: "border-rose-300",
-              textColor: "text-rose-700",
-              priceColor: "text-rose-800",
-              buttonColor: "bg-rose-600 hover:bg-rose-700",
+              bgColor: "bg-white",
+              borderColor: "border-white",
+              textColor: "text-black",
+              priceColor: "text-black",
+              buttonColor: "bg-black text-white hover:bg-gray-800",
               popular: true,
               features: [
                 "30 messages per day",
@@ -49,13 +49,13 @@ export default function Pricing() {
               ],
             },
             {
-              name: "Legendary Weeb",
+              name: "Premium Elite",
               price: "29.99",
-              bgColor: "bg-purple-50",
-              borderColor: "border-purple-300",
-              textColor: "text-purple-700",
-              priceColor: "text-purple-800",
-              buttonColor: "bg-purple-600 hover:bg-purple-700",
+              bgColor: "bg-gray-900",
+              borderColor: "border-gray-600",
+              textColor: "text-white",
+              priceColor: "text-white",
+              buttonColor: "bg-white text-black hover:bg-gray-200",
               features: [
                 "Everything in Pro",
                 "API access",
@@ -66,11 +66,11 @@ export default function Pricing() {
           ].map((plan, index) => (
             <div
               key={index}
-              className={`${plan.bgColor} relative p-8 rounded-2xl shadow-lg hover:shadow-2xl ${plan.borderColor} border-2 transition-all transform hover:-translate-y-2 hover:scale-[1.03] duration-300`}
+              className={`${plan.bgColor} relative p-8 rounded-2xl shadow-lg hover:shadow-2xl ${plan.borderColor} border-2 transition-all transform hover:-translate-y-2 hover:scale-[1.03] duration-300 ${plan.popular ? 'lg:scale-105 lg:-translate-y-6' : ''}`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-rose-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <span className="bg-black text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg border border-white">
                     Most Popular ⭐
                   </span>
                 </div>
@@ -90,13 +90,13 @@ export default function Pricing() {
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <Check className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.textColor}`} />
-                    <span className="text-sm font-medium text-gray-700 leading-relaxed">{feature}</span>
+                    <span className={`text-sm font-medium leading-relaxed ${plan.textColor}`}>{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <button
-                className={`w-full font-bold py-4 px-6 rounded-xl transition-all duration-200 text-base shadow-lg hover:shadow-xl transform hover:scale-105 text-white ${plan.buttonColor}`}
+                className={`w-full font-bold py-4 px-6 rounded-xl transition-all duration-200 text-base shadow-lg hover:shadow-xl transform hover:scale-105 text-black ${plan.buttonColor}`}
               >
                 {plan.price === "0" ? "Start Free Journey" : "Begin Adventure"}
               </button>
@@ -106,7 +106,7 @@ export default function Pricing() {
 
         {/* Additional Info */}
         <div className="mt-16 text-center">
-          <p className="text-white/80 text-sm">
+          <p className="text-gray-400 text-sm">
             All plans include 7-day free trial • Cancel anytime • No hidden fees
           </p>
         </div>
