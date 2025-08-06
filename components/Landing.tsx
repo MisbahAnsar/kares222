@@ -54,7 +54,7 @@ export default function Landing() {
                 alt="Anime Character"
                 width={384}
                 height={384}
-                className="rounded-lg shadow-2xl w-full h-full scale-x-[-1]"
+                className="rounded-lg w-full h-full scale-x-[-1]"
               />
             </div>
           </div>
