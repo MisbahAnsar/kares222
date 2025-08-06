@@ -62,6 +62,45 @@ export default function Landing() {
 
 
       </div>
+
+      {/* Bottom blur gradient effect - only on lg screens and above */}
+      <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-20 pointer-events-none">
+        <div 
+          className="w-full h-full"
+          style={{
+            backdropFilter: 'blur(0px)',
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,1) 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)'
+          }}
+        >
+          <div 
+            className="w-full h-full backdrop-blur-sm"
+            style={{
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 50%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 50%, black 100%)'
+            }}
+          >
+            <div 
+              className="w-full h-full backdrop-blur-md"
+              style={{
+                maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 70%, black 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 70%, black 100%)'
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      
+      {/* Smooth transition to black for mobile screens */}
+      <div className="lg:hidden absolute bottom-0 left-0 right-0 h-20 pointer-events-none">
+        <div 
+          className="w-full h-full"
+          style={{
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%)'
+          }}
+        />
+      </div>
     </div>
   );
 }
